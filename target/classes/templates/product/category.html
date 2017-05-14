@@ -21,25 +21,9 @@
     <hr/>
     <div class="row">
         <h2 class="col-lg-10">Events</h2>
-        <a href="#" th:href="@{index/manager/}">
-            <button class="btn btn-success col-lg-2">Event Manager</button>
+        <a href="#" th:href="@{~/index}">
+            <button class="btn btn-success col-lg-2">Home</button>
         </a>
-    </div>
-    <div class="row">
-        <form method="get" role="form" action="index/category/">
-            <fieldset class="col-lg-6 col-lg-offset-3">
-                <div class="form-group">
-                    <label class="control-label" for="category">Filter by category</label>
-                    <select name="category" id="category" class="form-control input-sm">
-                        <option th:each="category,iterStat : ${categoriesContainer}"
-                                th:text="${category.getName}"></option>
-                    </select>
-                </div>
-                <div class="form-group"> <!-- Submit button -->
-                    <button class="btn btn-primary " name="submit" type="submit">Submit</button>
-                </div>
-            </fieldset>
-        </form>
     </div>
     <div class="row">
         <div class="table-responsive">
@@ -53,7 +37,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="event,iterStat : ${eventsContainer}">
-                    <td><a href="#" th:href="@{index/{id}(id=${event.getId})}" th:text="${event.getName}">Event
+                    <td><a href="#" th:href="@{~/index/{id}(id=${event.getId})}" th:text="${event.getName}">Event
                         name</a></td>
                     <td th:text="${event.getDate} ? ${event.getDate} : 'No event date' "></td>
                     <td th:text="${event.getCategory} ? ${event.getCategory.getName} : 'No Category' "></td>
