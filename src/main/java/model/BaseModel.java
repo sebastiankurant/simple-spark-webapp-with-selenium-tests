@@ -7,7 +7,7 @@ public class BaseModel {
 	protected Integer id;
 	protected String name;
 
-	public BaseModel(String name) {
+	BaseModel(String name) {
 		this.name = name;
 	}
 
