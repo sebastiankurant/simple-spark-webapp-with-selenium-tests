@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <hr/>
+    <div class="row">
+        <h2 class="col-lg-10">Events</h2>
+        <a href="#" th:href="@{index/manager/}">
+            <button class="btn btn-success col-lg-2">Event Manager</button>
+        </a>
+    </div>
+    <div class="row">
+        <form method="get" role="form" action="index/category/">
+            <fieldset class="col-lg-6 col-lg-offset-3">
+                <div class="form-group">
+                    <label class="control-label" for="category">Filter by category</label>
+                    <select name="category" id="category" class="form-control input-sm">
+                        <option th:each="category,iterStat : ${categoriesContainer}"
+                                th:text="${category.getName}"></option>
+                    </select>
+                </div>
+                <div class="form-group"> <!-- Submit button -->
+                    <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th class="col-lg-6 col-md-8">Name</th>
+                    <th class="col-lg-2 col-md-2">Date</th>
+                    <th class="col-lg-2 col-md-2">Category</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="event,iterStat : ${eventsContainer}">
+                    <td><a href="#" th:href="@{index/{id}(id=${event.getId})}" th:text="${event.getName}">Event
+                        name</a></td>
+                    <td th:text="${event.getDate} ? ${event.getDate} : 'No event date' "></td>
+                    <td th:text="${event.getCategory} ? ${event.getCategory.getName} : 'No Category' "></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
