@@ -167,6 +167,9 @@ public class EventController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		if (event == null){
+			return this.render404();
+		}
 		parameters.put("categoriesContainer", categoryList);
 		parameters.put("eventContainer", event);
 		return new ModelAndView(parameters, "product/edit");
