@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <form method="post" role="form">
+        <fieldset class="col-lg-6 col-lg-offset-3">
+            <legend>Fill to add event.</legend>
+            <div class="form-group">
+                <label for="formName">Name</label> <input required="required" type="text" id="formName" name="formName"
+                                                          class="form-control input-lg">
+            </div>
+            <div class="form-group">
+                <label for="formDescription">Description</label> <textarea rows="5" id="formDescription"
+                                                                           name="formDescription"
+                                                                           class="form-control input-lg"></textarea>
+            </div>
+            <div class="form-group"> <!-- Date input -->
+                <label class="control-label" for="date">Date</label>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="category">Category</label>
+                <select name="category" id="category" class="form-control input-sm">
+                    <option th:each="category,iterStat : ${categoriesContainer}" th:text="${category.getName}"></option>
+                </select>
+            </div>
+            <div class="form-group"> <!-- Submit button -->
+                <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+    <a href="#" th:href="@{~/index/manager/}">
+        <button class="btn btn-info col-lg-4 col-lg-offset-4">Home</button>
+    </a>
+</div>
+<script>
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+    })
+</script>
+</body>
+</html>
