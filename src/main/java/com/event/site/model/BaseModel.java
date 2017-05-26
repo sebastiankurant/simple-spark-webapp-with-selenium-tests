@@ -1,4 +1,4 @@
-package model;
+package com.event.site.model;
 
 import java.lang.reflect.Field;
 

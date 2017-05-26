@@ -1,4 +1,4 @@
-package dao;
+package com.event.site.dao;
 
 import java.sql.Connection;
 

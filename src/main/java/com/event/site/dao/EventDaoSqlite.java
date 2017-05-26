@@ -1,7 +1,7 @@
-package dao;
+package com.event.site.dao;
 
-import model.Category;
-import model.Event;
+import com.event.site.model.Category;
+import com.event.site.model.Event;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

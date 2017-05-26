@@ -1,4 +1,4 @@
-package dao;
+package com.event.site.dao;
 
 import java.sql.*;
 import java.util.Map;
@@ -15,6 +15,20 @@ public class SqliteJDBCConnector {
 		}
 
 		return connection;
+	}
+
+	public static void clearDatabase(){
+		Connection connection = connection();
+		try {
+			Statement statement = connection.createStatement();
+			statement.execute("DELETE FROM categories");
+			statement.execute("DELETE FROM events");
+			statement.close();
+			connection.close();
+		} catch (SQLException e){
+			System.out.println("Database clear goes wrong");
+			e.printStackTrace();
+		}
 	}
 
 	public static void createTables() throws SQLException {

@@ -1,4 +1,4 @@
-package model;
+package com.event.site.model;
 
 public class Category extends BaseModel {
 

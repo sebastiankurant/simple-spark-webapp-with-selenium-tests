@@ -2,11 +2,8 @@ package test.selenium.pageobjectmodel;
 
 import org.openqa.selenium.By;
 
-
-public class AddEventPageModel extends PageObject{
-
-	String url = "http://localhost:8888/index/manager/new/";
-	By name = By.id("formName");
+public class EditEventPageModel extends PageObject {
+	String url = "http://localhost:8888/index/manager/edit/1";
 	By nameInput = By.id("formName");
 	By descriptionInput = By.id("formDescription");
 	By dateInput = By.id("date");
@@ -41,18 +38,18 @@ public class AddEventPageModel extends PageObject{
 		driver.findElement(homeButton).click();
 	}
 
-	public void addEvent(String name){
+	public void editEvent(String name){
 		this.setName(name);
 		this.clickSubmit();
 	}
 
-	public void addEvent(String name, String description){
+	public void editEvent(String name, String description){
 		this.setName(name);
 		this.setDescription(description);
 		this.clickSubmit();
 	}
 
-	public void addEvent(String name, String description, String date){
+	public void editEvent(String name, String description, String date){
 		this.setName(name);
 		this.setDescription(description);
 		this.setDate(date);

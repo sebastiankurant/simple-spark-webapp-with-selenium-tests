@@ -1,9 +1,9 @@
-package controller;
+package com.event.site.controller;
 
-import dao.CategoryDaoSqlite;
-import dao.EventDaoSqlite;
-import model.Category;
-import model.Event;
+import com.event.site.dao.CategoryDaoSqlite;
+import com.event.site.dao.EventDaoSqlite;
+import com.event.site.model.Category;
+import com.event.site.model.Event;
 import spark.ModelAndView;
 import spark.Request;
 

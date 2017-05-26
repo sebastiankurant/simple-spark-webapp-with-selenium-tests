@@ -1,5 +1,5 @@
-import controller.EventController;
-import dao.SqliteJDBCConnector;
+import com.event.site.controller.EventController;
+import com.event.site.dao.SqliteJDBCConnector;
 import spark.Request;
 import spark.Response;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
@@ -74,7 +74,6 @@ public class Main {
         });
 
         get("*", (request, response) -> {
-            System.out.println("404 not found!!");
             return new ThymeleafTemplateEngine().render(eventController.render404());
         });
     }
